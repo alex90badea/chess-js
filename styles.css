@@ -1,0 +1,50 @@
+body, html {
+    padding: 0;
+    background: #d0d0d0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 100vh;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+.board {
+    border-width: 1px 0 0 1px;
+    border-color: #000;
+    border-style: solid;
+    width: 700px;
+    height: 700px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.outer-board {
+    border: 22px solid #c0c0c0;
+}
+
+.cell {
+    border: 1px solid #000;
+    border-left: none;
+    border-top: none;
+    width: 12.5%;
+    height: 12.5%;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    user-select: none;
+}
+
+.cell.white {
+    background: #d5d5d5;
+}
+
+.cell.black {
+    background: #999;
+}
