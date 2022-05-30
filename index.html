@@ -7,16 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chess JS</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="module" src="game.js"></script>
     <script type="module" src="helpers.js"></script>
+    <script type="module" src="pieces/piece.js"></script>
+    <script type="module" src="pieces/rook.js"></script>
+    <script type="module" defer src="game.js"></script>
 </head>
 <body>
 
+<div class="check-message">Check!</div>
 
 <div class="outer-board">
+    <span class="current-player"></span>
     <div class="board">
 
-        <div id="a8" class="cell white"><span>&#9818;</span></div>
+        <div id="a8" class="cell white"></div>
         <div id="b8" class="cell black"></div>
         <div id="c8" class="cell white"></div>
         <div id="d8" class="cell black"></div>
