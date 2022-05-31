@@ -26,7 +26,7 @@ class Piece {
         this.setPosition(destinationCellId);
 
         game.renderPieces();
-        if (game.checkForCheck(true) === true) {
+        if (game.checkForCheck() === true) {
             this.setPosition(prevPosition);
             game.draw();
             return false;

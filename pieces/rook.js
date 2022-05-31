@@ -8,7 +8,7 @@ class Rook extends Piece {
         this.html_char = color === 'BLACK' ? '&#9820;' : '&#9814;';
     }
 
-    calculateAvailableMoves = (game) => {
+    calculateAvailableMoves = () => {
         this.availableMoves = [];
         this.canMoveHL(8);
         this.canMoveHR(8);

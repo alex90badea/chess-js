@@ -61,6 +61,9 @@ class Game {
         this.cleanup();
         this.draw();
         this.checkForCheck();
+        if (this.isCheckMate() === true) {
+            this.showCheckMateMessage();
+        }
     }
 
     /**
@@ -162,10 +165,43 @@ class Game {
             } else {
                 checkMessage.classList.add('active');
             }
+
+
+            
         } else {
             checkMessage.classList.remove('active');
         }
         return isInCheck;
+    }
+
+    isCheckMate = () => {
+        const currentPlayerPieces = this.state.filter(piece => piece.color === this.turn);
+        const currentPlayerKing = this.state.find(piece => piece.color === this.turn && piece instanceof King);
+        const opponentPieces = this.state.filter(piece => piece.color !== this.turn);
+        return currentPlayerPieces.every(piece => {
+            const originalPosition = piece.position;
+            if (piece.availableMoves.length === 0) {
+                return true;
+            }
+            return piece.availableMoves.every(move => {
+                piece.position = move;
+                const isInCheck = opponentPieces.some(piece => {
+                    //calculate new available moves
+                    piece.calculateAvailableMoves();
+                    return piece.availableMoves.includes(currentPlayerKing.position);
+                });
+                piece.position = originalPosition;
+                return isInCheck;
+            });
+        });
+
+    }
+
+    showCheckMateMessage = () => {
+        const checkMessage = $('.check-message');
+        checkMessage.classList.add('active');
+        checkMessage.innerText = 'Check MATE! ' + (this.turn === WHITE ? "BLACK" : "WHITE") + ' wins!';
+        $('.board').style.pointerEvents = 'none';
     }
 
 }
