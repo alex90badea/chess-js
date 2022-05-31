@@ -28,7 +28,7 @@ class Piece {
         game.renderPieces();
         if (game.checkForCheck(true) === true) {
             this.setPosition(prevPosition);
-            game.renderPieces();
+            game.draw();
             return false;
         }
 

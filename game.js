@@ -69,7 +69,7 @@ class Game {
     draw = () => {
 
         this.renderPieces();
-
+        $$('.cell span.active').forEach(elem => elem.removeEventListener('click', this.onPieceClick));
 
         // set active player indicator
         $$('.cell span').forEach(elem => elem.classList.remove('active'));
@@ -84,7 +84,6 @@ class Game {
         }
 
         // register onclick event for current player to move
-        $$('.cell span.active').forEach(elem => elem.removeEventListener('click', this.onPieceClick));
         $$('.cell span.active').forEach(elem => elem.addEventListener('click', this.onPieceClick));
 
     }
@@ -171,8 +170,8 @@ class Game {
 
 }
 
-window.game = new Game();
+game = new Game();
 
 window.onload = () => {
-    window.game.startGame();
+    game.startGame();
 };
